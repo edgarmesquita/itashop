@@ -1,0 +1,74 @@
+<%@ MasterClass="Application.MasterPages.Master3Columns" %>
+
+<com:TContent ID="cphHeader">
+    <script type="text/javascript">
+        var currentTime = new Date(<%= date("Y, ").(date("m")-1).date(", d, H, i, s")%>);
+        $(function(){
+            timeCount(2010, 8, 18, 21, 0, 0);
+        });
+    </script>
+</com:TContent>
+
+<com:TContent ID="cphLeft">
+    <div class="box" id="discount">
+        <div class="header"><span><span></span></span></div>
+        <div class="content">
+            <div class="center">
+                <span class="left"></span><span class="right"></span>
+                <img class="ticket" src="ticket.php?p=10" alt="10% de desconto" />
+                <p class="first"><span class="from">de R$ 1.999,00</span><br /><span class="to">por R$ 1799,10</span></p>
+                <p class="buy"><input type="button" name="comprar" value="comprar" class="button bt-comprar" /></p>
+            </div>
+        </div>
+        <div class="footer"><span><span></span></span></div>
+    </div>
+
+    <div class="box">
+        <div class="header"><span><span></span></span></div>
+        <div class="content">
+            <div class="center">
+                <span class="left"></span><span class="right"></span>
+                <h3>Tempo para comprar</h3>
+                <p class="time">
+                    <span class="box"><span class="number" id="hour">20</span>horas</span><span class="box"><span class="number" id="minute">20</span>minutos</span><span class="box"><span class="number" id="second">20</span>segundos</span>
+                </p>
+                <hr />
+                <p><span>683</span>compras efetuadas</p>
+            </div>
+        </div>
+        <div class="footer"><span><span></span></span></div>
+    </div>
+
+</com:TContent>
+
+<com:TContent ID="cphRight">
+    <%include Application.UserControls.Week %>
+    
+</com:TContent>
+
+<com:TContent ID="cphCenter">
+    <h2>Promoção do dia</h2>
+    <h3>Notebook Philco Intel Dual Core 2.5GHz - 3Gb Memória -
+        Disco rígido de 500Gb - Webcam 1.3 megapixels</h3>
+    <p class="image"><img src="data/images/notebook-philco.jpg" alt="" /></p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Praesent eu magna id elit malesuada lacinia. Mauris at
+        pharetra nisl. Aliquam erat volutpat. Phasellus sagittis
+        ante diam, consequat faucibus ligula. Maecenas nunc magna,
+        tincidunt nec tempor non, suscipit luctus eros. Phasellus
+        scelerisque posuere neque, ac condimentum ante sollicitudin
+        consequat. Aliquam massa ipsum, feugiat sit amet fermentum
+        vel, pharetra in nulla. Vestibulum ante ipsum primis in
+        faucibus orci luctus et ultrices posuere cubilia Curae;
+        Duis accumsan, lacus eget imperdiet dapibus, sapien orci
+        vehicula turpis, non mollis ligula lorem a felis. Donec
+        eget arcu nec orci congue facilisis nec malesuada purus.</p>
+    <h4>Regulamento</h4>
+    <ul id="regulations">
+        <li>Cupom válido de 17 de agosto, 2010 a 17 de fevereiro, 2011</li>
+        <li>Limite de uso de 1 cupom por pessoa</li>
+        <li>Pode ser comprado como presente</li>
+        <li>O cupom será enviado por e-mail e estará disponível na sua conta do Peixe Urbano em até 24 horas após o encerramento da oferta</li>
+        <li>Não cumulativo com outras promoções</li>
+    </ul>
+</com:TContent>

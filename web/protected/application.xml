@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application id="itashop" mode="Debug">
+    <paths>
+        <using namespace="Application.DataBase.*"/>
+    </paths>
+
+    <modules>
+        <module id="auth" class="System.Security.TAuthManager" UserManager="users"
+                LoginPage="admin.usuarios.LoginUsuario"/>
+
+        <module id="users" class="System.Security.TDbUserManager" UserClass="Application.Usuario"/>
+
+        <module class="System.Data.ActiveRecord.TActiveRecordConfig" EnableCache="true" id="db1">
+            <database ConnectionString="mysql:host=127.0.0.1;dbname=equantic_itashop"
+                      Username="itashop" Password="ita$hop2010" Charset="utf8" />
+        </module>
+
+        <module id="session" class="THttpSession" SessionName="SSID"
+                CookieMode="Allow" UseCustomStorage="false" AutoStart="true" GCProbability="1"
+                UseTransparentSessionID="true" TimeOut="300"/>
+
+        <module id="sqlmap" class="System.Data.SqlMap.TSqlMapConfig"
+                EnableCache="true" ConfigFile="protected/sqlmap.xml">
+
+            <database ConnectionString="mysql:host=127.0.0.1;dbname=equantic_itashop"
+                      Username="itashop" Password="ita$hop2010"/>
+        </module>
+    </modules>
+</application>

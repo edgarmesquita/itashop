@@ -1,0 +1,69 @@
+<%@ MasterClass="Application.MasterPages.MasterAdmin" %>
+<com:TContent ID="cphMain">
+    <com:TPanel ID="pnView" Visible="False">
+        <fieldset>
+            <legend>Grupo</legend>
+
+            <span class="row">
+                <span class="pre-field">Nome:</span>
+                <com:TLabel ID="vNome" CssClass="field" />
+            </span>
+            <span class="controls">
+                <com:TButton ID="btVoltar" Text="Voltar" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.grupos.GrupoList')%>';return false;" />
+                <com:TButton ID="btEditar" Text="Editar" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.grupos.GrupoForm', array('action'=>'edit', 'id'=>$this->id))%>';return false;" />
+            </span>
+        </fieldset>
+    </com:TPanel>
+    <com:TPanel ID="pnForm" Visible="False">
+        <fieldset>
+            <legend>Grupo</legend>
+
+            <span class="row">
+                <span class="pre-field">Nome:</span>
+                <span class="field">
+                    <com:TTextBox ID="fNome" Width="150px" />
+                    <com:TRequiredFieldValidator
+                        ControlToValidate="fNome"
+                        ErrorMessage="O nome deve ser preenchido."
+                        Display="Dynamic" />
+                </span>
+            </span>
+
+            <com:TRepeater ID="rptPermissoes" OnItemDataBound="repeaterDataBound">
+                <prop:HeaderTemplate>
+                    <table border="0" cellpadding="0" cellspacing="0" class="grid" style="width:auto;">
+                        <thead>
+                            <tr>
+                                <th>Ação</th>
+                                <th colspan="8">Permissões</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                </prop:HeaderTemplate>
+                <prop:ItemTemplate>
+                    <com:TTableRow ID="trPermissao">
+                        <com:TTableCell><com:TLiteral ID="ltAcao" /><com:THiddenField ID="hdfAcao" /></com:TTableCell>
+                        <com:TTableCell><com:TCheckBox ID="ckbVisualiza" Text="Visualiza" /></com:TTableCell>
+                        <com:TTableCell><com:TCheckBox ID="ckbInsere" Text="Insere" /></com:TTableCell>
+                        <com:TTableCell><com:TCheckBox ID="ckbAtualiza" Text="Atualiza" /></com:TTableCell>
+                        <com:TTableCell><com:TCheckBox ID="ckbExclui" Text="Exclui" /></com:TTableCell>
+                        <com:TTableCell><com:TCheckBox ID="ckbImporta" Text="Importa" /></com:TTableCell>
+                        <com:TTableCell><com:TCheckBox ID="ckbExporta" Text="Exporta" /></com:TTableCell>
+                        <com:TTableCell><com:TCheckBox ID="ckbImprime" Text="Imprime" /></com:TTableCell>
+                        <com:TTableCell><com:TCheckBox ID="ckbEspecial" Text="Especial" /></com:TTableCell>
+                    </com:TTableRow>
+                </prop:ItemTemplate>
+                <prop:FooterTemplate>
+                        </tbody>
+                    </table>
+                </prop:FooterTemplate>
+            </com:TRepeater>
+
+            <span class="controls">
+                <com:TButton CssClass="button" ID="btSalvar" Text="Salvar" OnClick="salvarClick" />
+                <com:TButton CssClass="button" ID="btCancelar" Text="Cancelar" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.grupos.GrupoList')%>';return false;" />
+            </span>
+        </fieldset>
+    </com:TPanel>
+
+</com:TContent>

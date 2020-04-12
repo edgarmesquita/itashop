@@ -1,0 +1,49 @@
+<%@ MasterClass="Application.MasterPages.MasterAdmin" %>
+<com:TContent ID="cphMain">
+    <com:THiddenField ID="pg" Value="1" />
+    <h2>Notícias</h2>
+    <div id="controls">
+        <com:TButton CssClass="button" ID="btNew" Text="Nova notícia" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.noticias.NoticiaForm')%>';return false;" />
+    </div>
+    <com:TDataGrid ID="NoticiaGrid" CssClass="grid" CellSpacing="0"
+                   DataKeyField="noticia" AutoGenerateColumns="false" AlternatingItemStyle.CssClass="alt"
+                   OnDeleteCommand="deleteButtonClicked" OnEditCommand="editButtonClicked">
+
+        <com:TBoundColumn HeaderText="#" DataField="noticia" ItemStyle.HorizontalAlign="Right"
+                          ItemStyle.Width="30px" />
+
+        <com:TButtonColumn HeaderText="" ImageUrl="resources/images/admin/icon-edit.gif"
+                           ItemStyle.Width="20px" ItemStyle.HorizontalAlign="Center"
+                           Text="Editar" ButtonType="ImageButton" CommandName="edit" />
+
+        <com:TButtonColumn HeaderText="" ImageUrl="resources/images/admin/icon-delete.gif"
+                           ItemStyle.Width="20px" ItemStyle.HorizontalAlign="Center" ItemStyle.CssClass="delete"
+                           Text="Excluir" ButtonType="ImageButton" CommandName="delete" />
+
+        <com:THyperLinkColumn HeaderText="Nome" DataTextField="nome"
+                              DataNavigateUrlField="noticia">
+            <prop:DataNavigateUrlFormatString>#
+	          $this->Service->constructUrl('admin.noticias.NoticiaForm',array('action'=>'view', 'id'=>{0}))
+            </prop:DataNavigateUrlFormatString>
+        </com:THyperLinkColumn>
+
+        <com:TBoundColumn HeaderText="Título" DataField="titulo" />
+
+        <com:TBoundColumn HeaderText="Data de publicação" DataField="publicarem"
+                          DataFormatString="#{0}!=null||{0}!=''?date('d/m/Y', strtotime({0})):'- - -'"
+                          ItemStyle.Width="120px" ItemStyle.HorizontalAlign="Center" />
+
+        <com:TBoundColumn HeaderText="Alterado por" DataField="alteradoPor.nome"
+                          ItemStyle.Width="120px" />
+
+    </com:TDataGrid>
+    <com:TLiteral ID="paging" />
+    <script type="text/javascript">
+        $$('td.delete input').each(function(element){
+            $(element).observe('click', function(event){
+                if (!confirm("Deseja realmente excluir este item?"))
+                    Event.stop(event);
+            }, false);
+        });
+    </script>
+</com:TContent>

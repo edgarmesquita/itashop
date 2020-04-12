@@ -1,0 +1,43 @@
+<%@ MasterClass="Application.MasterPages.MasterAdmin" %>
+<com:TContent ID="cphMain">
+    <com:THiddenField ID="pg" Value="1" />
+
+    <h2>Dúvidas Frequentes</h2>
+    <div id="controls">
+        <com:TButton CssClass="button" ID="btNew" Text="Nova dúvida" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.duvidas.DuvidaForm')%>';return false;" />
+    </div>
+    <com:TDataGrid ID="DuvidaGrid" CssClass="grid" CellSpacing="0" PageSize="10"
+                   DataKeyField="faq" AutoGenerateColumns="false" AlternatingItemStyle.CssClass="alt"
+                   OnDeleteCommand="deleteButtonClicked" OnEditCommand="editButtonClicked" OnItemCreated="itemCreated">
+
+        <com:TBoundColumn HeaderText="#" DataField="faq" ItemStyle.HorizontalAlign="Right"
+                          ItemStyle.Width="30px" />
+
+        <com:TButtonColumn HeaderText="" ImageUrl="resources/images/admin/icon-edit.gif"
+                           ItemStyle.Width="20px" ItemStyle.HorizontalAlign="Center"
+                           Text="Editar" ButtonType="ImageButton" CommandName="edit" />
+
+        <com:TButtonColumn HeaderText="" ImageUrl="resources/images/admin/icon-delete.gif"
+                           ItemStyle.Width="20px" ItemStyle.HorizontalAlign="Center" ItemStyle.CssClass="delete"
+                           Text="Excluir" ButtonType="ImageButton" CommandName="delete" />
+
+        <com:THyperLinkColumn HeaderText="Pergunta" DataTextField="pergunta"
+                              DataNavigateUrlField="faq">
+            <prop:DataNavigateUrlFormatString>#
+	          $this->Service->constructUrl('admin.duvidas.DuvidaForm',array('action'=>'view', 'id'=>{0}))
+            </prop:DataNavigateUrlFormatString>
+        </com:THyperLinkColumn>
+
+        <com:TBoundColumn HeaderText="Posi��o" DataField="posicao" ItemStyle.Width="30px" />
+
+    </com:TDataGrid>
+    <com:TLiteral ID="paging" />
+    <script type="text/javascript">
+        $$('td.delete input').each(function(element){
+            $(element).observe('click', function(event){
+                if (!confirm("Deseja realmente excluir este item?"))
+                    Event.stop(event);
+            }, false);
+        });
+    </script>
+</com:TContent>

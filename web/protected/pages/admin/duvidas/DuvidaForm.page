@@ -1,0 +1,67 @@
+<%@ MasterClass="Application.MasterPages.MasterAdmin" %>
+<com:TContent ID="cphMain">
+    <com:TPanel ID="pnView" Visible="False">
+        <fieldset>
+            <legend>D&uacute;vida Frequente</legend>
+
+            <span class="row">
+                <span class="pre-field">Pergunta:</span>
+                <com:TLabel ID="vPergunta" CssClass="field" />
+            </span>
+            <span class="row">
+                <span class="pre-field">Resposta:</span>
+                <com:TLabel ID="vResposta" CssClass="field" />
+            </span>
+            <span class="row">
+                <span class="pre-field">Posi&ccedil;&atilde;o:</span>
+                <com:TLabel ID="vPosicao" CssClass="field" />
+            </span>
+            <span class="controls">
+                <com:TButton ID="btVoltar" Text="Voltar" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.duvidas.DuvidaList')%>';return false;" />
+                <com:TButton ID="btEditar" Text="Editar" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.duvidas.DuvidaForm', array('action'=>'edit', 'id'=>$this->id))%>';return false;" />
+            </span>
+        </fieldset>
+    </com:TPanel>
+    <com:TPanel ID="pnForm" Visible="False">
+        <fieldset>
+            <legend>D&uacute;vida Frequente</legend>
+
+            <span class="row">
+                <span class="pre-field">Pergunta:</span>
+                <span class="field">
+                    <com:TTextBox ID="fPergunta" Width="300px" />
+                    <com:TRequiredFieldValidator
+                        ControlToValidate="fPergunta"
+                        ErrorMessage="A pergunta deve ser preenchida."
+                        Display="Dynamic" />
+                </span>
+            </span>
+            <span class="row">
+                <span class="pre-field">Resposta:</span>
+                <span class="field">
+                    <com:TTextBox ID="fResposta" TextMode="MultiLine" Rows="4" Width="300px" />
+                    <com:TRequiredFieldValidator
+                        ControlToValidate="fResposta"
+                        ErrorMessage="A resposta deve ser preenchida."
+                        Display="Dynamic" />
+                </span>
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Posi&ccedil;&atilde;o:</span>
+                <span class="field">
+                    <com:TTextBox ID="fPosicao" Width="30px" />
+                    <com:TRequiredFieldValidator
+                        ControlToValidate="fPosicao"
+                        ErrorMessage="A posição deve ser preenchida."
+                        Display="Dynamic" />
+                </span>
+            </span>
+            <span class="controls">
+                <com:TButton CssClass="button" ID="btSalvar" Text="Salvar" OnClick="salvarClick" />
+                <com:TButton CssClass="button" ID="btCancelar" Text="Cancelar" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.duvidas.DuvidaList')%>';return false;" />
+            </span>
+        </fieldset>
+    </com:TPanel>
+
+</com:TContent>

@@ -1,0 +1,219 @@
+<%@ MasterClass="Application.MasterPages.MasterAdmin" %>
+<com:TContent ID="cphMain">
+
+    <com:THiddenField ID="AcaoPaiId" />
+    <com:THiddenField ID="ConteudoId" />
+
+    <com:TPanel ID="pnView" Visible="False">
+        <fieldset>
+            <legend>Ação</legend>
+
+            <span class="row">
+                <span class="pre-field">Aplicação:</span>
+                <com:TLabel ID="vAplicacao" CssClass="field" />
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Menu:</span>
+                <com:TLabel ID="vMenu" CssClass="field" />
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Nome:</span>
+                <com:TLabel ID="vNome" CssClass="field" />
+            </span>
+            <span class="row">
+                <span class="pre-field">Descrição:</span>
+                <com:TLabel ID="vDescricao" CssClass="field" />
+            </span>
+
+            <span class="row">
+                <span class="pre-field">URL:</span>
+                <com:TLabel ID="vUrl" CssClass="field" />
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Posição:</span>
+                <com:TLabel ID="vPosicao" CssClass="field" />
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Conteúdo:</span>
+                <com:TLabel ID="vConteudo" CssClass="field" />
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Ação pai:</span>
+                <com:TLabel ID="vAcaoPai" CssClass="field" />
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Ativo:</span>
+                <com:TLabel ID="vAtivo" CssClass="field" />
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Restrito:</span>
+                <com:TLabel ID="vRestrito" CssClass="field" />
+            </span>
+            <span class="controls">
+                <com:TButton CssClass="button" ID="btVoltar" Text="Voltar" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.acoes.AcaoList')%>';return false;" />
+                <com:TButton CssClass="button" ID="btEditar" Text="Editar" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.acoes.AcaoForm', array('action'=>'edit', 'id'=>$this->id))%>';return false;" />
+            </span>
+        </fieldset>
+    </com:TPanel>
+    <com:TPanel ID="pnForm" Visible="False">
+        <fieldset>
+            <legend>Ação</legend>
+
+            <span class="row">
+                <span class="pre-field">Aplicação:</span>
+                <span class="field">
+                    <com:TDropDownList ID="ddlAplicacao">
+                        <com:TListItem Text="Portal" Value="1" />
+                        <com:TListItem Text="Administração" Value="2" />
+                    </com:TDropDownList>
+                </span>
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Menu:</span>
+                <span class="field">
+                    <com:TDropDownList ID="fMenu">
+                        <com:TListItem Text="Sim" Value="1" />
+                        <com:TListItem Text="Não" Value="0" />
+                    </com:TDropDownList>
+                </span>
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Nome:</span>
+                <span class="field">
+                    <com:TTextBox ID="fNome" Width="150px" />
+                    <com:TRequiredFieldValidator
+                        ControlToValidate="fNome"
+                        ErrorMessage="O nome deve ser preenchido."
+                        Display="Dynamic" />
+                </span>
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Descrição:</span>
+                <span class="field">
+                    <com:TTextBox ID="fDescricao" Width="150px" />
+                </span>
+            </span>
+
+            <span class="row">
+                <span class="pre-field">URL:</span>
+                <span class="field">
+                    <com:TTextBox ID="fUrl" Width="300px" />
+                </span>
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Posição:</span>
+                <span class="field">
+                    <com:TTextBox ID="fPosicao" Width="30px" />
+                    <com:TRequiredFieldValidator
+                        ControlToValidate="fPosicao"
+                        ErrorMessage="A posição deve ser preenchida."
+                        Display="Dynamic" />
+                </span>
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Conteúdo:</span>
+                <span class="field">
+                    <com:TTextBox ID="fConteudo" Width="300px" ReadOnly="true" />
+                    <a href="javascript:openContent('<%= $this->Request['id']%>');"><img src="resources/images/admin/icon-sitemap.gif" alt="Selecione o conteúdo" class="middle"></a>
+                    <a href="javascript:clearContent();"><img src="resources/images/admin/icon-delete.gif" alt="Limpar" class="middle"></a>
+                </span>
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Ação pai:</span>
+                <span class="field">
+                    <com:TTextBox ID="fAcaoPai" Width="300px" ReadOnly="true" />
+                    <a href="javascript:openAction('<%= $this->Request['id']%>');"><img src="resources/images/admin/icon-sitemap.gif" alt="Selecione a ação" class="middle"></a>
+                    <a href="javascript:clearAction();"><img src="resources/images/admin/icon-delete.gif" alt="Limpar" class="middle"></a>
+                </span>
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Ativo:</span>
+                <span class="field">
+                    <com:TDropDownList ID="fAtivo">
+                        <com:TListItem Text="Ativo" Value="1" />
+                        <com:TListItem Text="Inativo" Value="0" />
+                    </com:TDropDownList>
+                </span>
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Restrito:</span>
+                <span class="field">
+                    <com:TDropDownList ID="fRestrito">
+                        <com:TListItem Text="Não" Value="0" />
+                        <com:TListItem Text="Sim" Value="1" />
+                    </com:TDropDownList>
+                </span>
+            </span>
+
+            <span class="controls">
+                <com:TButton CssClass="button" ID="btSalvar" Text="Salvar" OnClick="salvarClick" />
+                <com:TButton CssClass="button" ID="btCancelar" Text="Cancelar" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.categorias.CategoriaList')%>';return false;" />
+            </span>
+        </fieldset>
+
+        <script type="text/javascript">
+            var actionUrl = "<%=$this->Service->constructUrl('admin.popup.Acao')%>";
+            var contentUrl = "<%=$this->Service->constructUrl('admin.popup.Conteudo')%>";
+            
+            var openAction = function(id)
+            {
+                if(id != "")
+                    url = actionUrl + "&a="+id;
+                else
+                    url = actionUrl;
+
+                url += "&app=" + jQuery("#<%=$this->ddlAplicacao->ClientID%>").val();
+
+                window.open(url, 'actions', 'width=600, height=450');
+                void(0);
+            }
+            var setAction = function(id, content)
+            {
+                jQuery("#<%=$this->AcaoPaiId->ClientID%>").val(id);
+                jQuery("#<%=$this->fAcaoPai->ClientID%>").val(content);
+            }
+            var clearAction = function()
+            {
+                jQuery("#<%=$this->AcaoPaiId->ClientID%>").val("");
+                jQuery("#<%=$this->fAcaoPai->ClientID%>").val("");
+            }
+
+            var openContent = function(id)
+            {
+                if(id != "")
+                    url = contentUrl + "&c="+id;
+                else
+                    url = contentUrl;
+
+                window.open(url, 'contents', 'width=600, height=450');
+                void(0);
+            }
+            var setContent = function(id, content)
+            {
+                jQuery("#<%=$this->ConteudoId->ClientID%>").val(id);
+                jQuery("#<%=$this->fConteudo->ClientID%>").val(content);
+            }
+            var clearContent = function()
+            {
+                jQuery("#<%=$this->ConteudoId->ClientID%>").val("");
+                jQuery("#<%=$this->fConteudo->ClientID%>").val("");
+            }
+        </script>
+    </com:TPanel>
+
+</com:TContent>

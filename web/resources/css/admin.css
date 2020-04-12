@@ -1,0 +1,47 @@
+h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a{color:#006600;}
+
+#all{border-top: 5px solid #666;}
+
+#header{ height: 97px;}
+#header h1{top:8px; width:203px; height:89px; background:url(../images/logo-admin.jpg) no-repeat;}
+#header p.tab{background: #DDD;}
+
+#menu{ height: 26px; background: #666;}
+#menu ul li{width: auto; padding: 0; float: left}
+#menu ul li a{margin: 2px 20px 2px 20px; background: none; width: auto; padding: 0;}
+#menu ul li a span{color:#FFF;}
+#menu ul li ul{width: 150px; height: auto; margin: 0 0 0 16px;}
+#menu ul li ul li{float:none; display: block; width: auto;}
+#menu ul li ul li a{margin: 5px;}
+#menu ul li ul li a:hover span{color:#006600;}
+
+#footer{background: #666; height: 26px; padding: 4px 0 0 0;}
+
+table.grid{width:100%;}
+table.grid tr th{background:#2E2F2E url(../images/admin/grid-header-bg.gif) repeat-x; color:#FFF; height:22px; border-right:1px solid #777; border-left:1px solid #000; padding:0 5px;}
+table.grid tr td{background:#FFF; padding:2px 4px;}
+table.grid tr.alt td{background:#EAEAEA;}
+
+table.grid caption{font-weight:bold; text-align:left; padding:0 0 5px 0;}
+
+fieldset{border:1px solid #CCC; background:#EEE; margin:0 0 10px 0;}
+legend{font-weight:bold; font-size:11pt; color:#006600;}
+input.button{height:26px; padding: 0 10px; vertical-align: middle; line-height: 100%!important; font-size: 10pt!important; font-weight: bold; color:#FFF; border-right:1px solid #777; border-left:1px solid #000; overflow:inherit; cursor: pointer; background:#2E2F2E url(../images/admin/grid-header-bg.gif) repeat-x;}
+
+#login{width: 200px; margin: 0 auto;}
+#login input{margin:5px 0;}
+#login input.button{margin:5px 0 0 0;}
+#login label{font-weight: bold; color: #006600;}
+
+#controls{border:1px solid #CCC; background:#EEE; padding:5px; text-align:right; margin:0 0 10px 0;}
+
+.paging{padding:10px 0 0 0;}
+.paging span.currentPage{font-weight:bold;}
+.paging a{text-decoration:none;}
+
+.TDatePicker_default .calendarBody{text-align:left !important;}
+.TDatePicker_default .calendarBody .grid{width:auto !important; margin:0 !important;}
+.TDatePicker_default .calendarBody .grid tr th{padding:0 2px !important;}
+
+#colorSelector {display:inline-block; position: relative; width: 36px; height: 36px; background: url(../images/colorpicker/select.png); vertical-align: middle;}
+#colorSelector span {display:block; position: absolute; top: 3px; left: 3px; width: 30px; height: 30px;	background: url(../images/colorpicker/select.png) center;}

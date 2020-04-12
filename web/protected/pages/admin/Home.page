@@ -1,0 +1,5 @@
+<%@ MasterClass="Application.MasterPages.MasterAdmin" %>
+<com:TContent ID="cphMain">
+    <p>Bem-vindo a Adminitração do Clube Itashop.</p>
+    <p>Para iniciar, escolha uma opção no menu.</p>
+</com:TContent>

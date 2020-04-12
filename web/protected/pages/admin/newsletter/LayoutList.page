@@ -1,0 +1,40 @@
+<%@ MasterClass="Application.MasterPages.MasterAdmin" %>
+<com:TContent ID="cphMain">
+    <com:THiddenField ID="pg" Value="1" />
+
+    <h2>Layouts</h2>
+    <div id="controls">
+        <com:TButton CssClass="button" ID="btNew" Text="Novo layout" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.newsletter.LayoutForm')%>';return false;" />
+    </div>
+    <com:TDataGrid ID="LayoutGrid" CssClass="grid" CellSpacing="0" PageSize="10"
+                   DataKeyField="layout" AutoGenerateColumns="false" AlternatingItemStyle.CssClass="alt"
+                   OnDeleteCommand="deleteButtonClicked" OnEditCommand="editButtonClicked" OnItemCreated="itemCreated">
+
+        <com:TBoundColumn HeaderText="#" DataField="layout" ItemStyle.HorizontalAlign="Right"
+                          ItemStyle.Width="30px" />
+
+        <com:TButtonColumn HeaderText="" ImageUrl="resources/images/admin/icon-edit.gif"
+                           ItemStyle.Width="20px" ItemStyle.HorizontalAlign="Center"
+                           Text="Editar" ButtonType="ImageButton" CommandName="edit" />
+
+        <com:TButtonColumn HeaderText="" ImageUrl="resources/images/admin/icon-delete.gif"
+                           ItemStyle.Width="20px" ItemStyle.HorizontalAlign="Center" ItemStyle.CssClass="delete"
+                           Text="Excluir" ButtonType="ImageButton" CommandName="delete" />
+
+        <com:THyperLinkColumn HeaderText="Título" DataTextField="titulo"
+                              DataNavigateUrlField="layout">
+            <prop:DataNavigateUrlFormatString>#
+	          $this->Service->constructUrl('admin.newsletter.LayoutForm',array('action'=>'view', 'id'=>{0}))
+            </prop:DataNavigateUrlFormatString>
+        </com:THyperLinkColumn>
+    </com:TDataGrid>
+    <com:TLiteral ID="paging" />
+    <script type="text/javascript">
+        $$('td.delete input').each(function(element){
+            $(element).observe('click', function(event){
+                if (!confirm("Deseja realmente excluir este item?"))
+                    Event.stop(event);
+            }, false);
+        });
+    </script>
+</com:TContent>

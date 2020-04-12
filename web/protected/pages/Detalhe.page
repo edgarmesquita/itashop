@@ -1,0 +1,8 @@
+<%@ MasterClass="Application.MasterPages.Master3Columns" %>
+
+<com:TContent ID="cphLeft">
+    
+</com:TContent>
+<com:TContent ID="cphRight">
+
+</com:TContent>

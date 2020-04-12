@@ -1,0 +1,71 @@
+<%@ MasterClass="Application.MasterPages.MasterAdmin" %>
+<com:TContent ID="cphMain">
+    <com:TPanel ID="pnView" Visible="False">
+        <fieldset>
+            <legend>E-mail</legend>
+
+            <span class="row">
+                <span class="pre-field">Nome:</span>
+                <com:TLabel ID="vNome" CssClass="field" />
+            </span>
+            <span class="row">
+                <span class="pre-field">E-mail:</span>
+                <com:TLabel ID="vEmail" CssClass="field" />
+            </span>
+            <span class="row">
+                <span class="pre-field">Ativo:</span>
+                <com:TLabel ID="vAtivo" CssClass="field" />
+            </span>
+            <span class="controls">
+                <com:TButton CssClass="button" ID="btVoltar" Text="Voltar" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.newsletter.EmailList')%>';return false;" />
+                <com:TButton CssClass="button" ID="btEditar" Text="Editar" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.newsletter.EmailForm', array('action'=>'edit', 'id'=>$this->id))%>';return false;" />
+            </span>
+        </fieldset>
+    </com:TPanel>
+    <com:TPanel ID="pnForm" Visible="False">
+        <fieldset>
+            <legend>E-mail</legend>
+
+            <span class="row">
+                <span class="pre-field">Nome:</span>
+                <span class="field">
+                    <com:TTextBox ID="fNome" Width="150px" />
+                    <com:TRequiredFieldValidator
+                        ControlToValidate="fNome"
+                        ErrorMessage="O nome deve ser preenchido."
+                        Display="Dynamic" />
+                </span>
+            </span>
+            <span class="row">
+                <span class="pre-field">E-mail:</span>
+                <span class="field">
+                    <com:TTextBox ID="fEmail" Width="150px" />
+                    <com:TEmailAddressValidator
+                        ControlToValidate="fEmail" ValidationGroup="contato"
+                        FocusOnError="true"
+                        Display="Dynamic"
+                        Text="Endereço de e-mail inválido." />
+                    <com:TRequiredFieldValidator
+                        ControlToValidate="fEmail" ValidationGroup="contato"
+                        ErrorMessage="O e-mail deve ser preenchido."
+                        Display="Dynamic" />
+                </span>
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Ativo:</span>
+                <span class="field">
+                    <com:TDropDownList ID="fAtivo">
+                        <com:TListItem Text="Ativo" Value="1" />
+                        <com:TListItem Text="Inativo" Value="0" />
+                    </com:TDropDownList>
+                </span>
+            </span>
+            <span class="controls">
+                <com:TButton CssClass="button" ID="btSalvar" Text="Salvar" OnClick="salvarClick" />
+                <com:TButton CssClass="button" ID="btCancelar" Text="Cancelar" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.newsletter.EmailList')%>';return false;" />
+            </span>
+        </fieldset>
+    </com:TPanel>
+
+</com:TContent>

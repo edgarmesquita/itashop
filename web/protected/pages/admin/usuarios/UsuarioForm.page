@@ -1,0 +1,109 @@
+<%@ MasterClass="Application.MasterPages.MasterAdmin" %>
+<com:TContent ID="cphMain">
+    <com:TPanel ID="pnView" Visible="False">
+        <fieldset>
+            <legend>Usuário</legend>
+
+            <span class="row">
+                <span class="pre-field">Nome:</span>
+                <com:TLabel ID="vNome" CssClass="field" />
+            </span>
+            <span class="row">
+                <span class="pre-field">Alias:</span>
+                <com:TLabel ID="vLogin" CssClass="field" />
+            </span>
+
+            <span class="controls">
+                <com:TButton ID="btVoltar" Text="Voltar" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.usuarios.UsuarioList')%>';return false;" />
+                <com:TButton ID="btEditar" Text="Editar" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.usuarios.UsuarioForm', array('action'=>'edit', 'id'=>$this->id))%>';return false;" />
+            </span>
+        </fieldset>
+    </com:TPanel>
+    <com:TPanel ID="pnForm" Visible="False">
+        <fieldset>
+            <legend>Usuário</legend>
+
+            <span class="row">
+                <span class="pre-field">Nome:</span>
+                <span class="field">
+                    <com:TTextBox ID="fNome" Width="150px" />
+                    <com:TRequiredFieldValidator
+                        ControlToValidate="fNome"
+                        ErrorMessage="O nome deve ser preenchido."
+                        Display="Dynamic" />
+                </span>
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Apelido (login):</span>
+                <span class="field">
+                    <com:TTextBox ID="fLogin" Width="150px" />
+                    <com:TRequiredFieldValidator
+                        ControlToValidate="fLogin"
+                        ErrorMessage="O apelido (login) deve ser preenchido."
+                        Display="Dynamic" />
+                </span>
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Senha:</span>
+                <span class="field">
+                    <com:TTextBox ID="fSenha" Width="150px" TextMode="Password" />
+                    <com:TRequiredFieldValidator ID="rfvSenha"
+                                                 ControlToValidate="fSenha"
+                                                 ErrorMessage="A senha deve ser preenchida."
+                                                 Display="Dynamic" />
+                </span>
+            </span>
+
+            <span class="row">
+                <span class="pre-field">Grupo:</span>
+                <span class="field"><com:TDropDownList ID="ddlGrupo" OnDataBound="grupoDataBound"
+                                                       Width="154px" AutoPostBack="true" ValidationGroup="g1"
+                                                       OnTextChanged="ddlGrupoTextChanged" /></span>
+            </span>
+
+            <com:TRepeater ID="rptPermissoes" OnItemDataBound="repeaterDataBound">
+                <prop:HeaderTemplate>
+                    <table border="0" cellpadding="0" cellspacing="0" class="grid" style="width:auto;">
+                        <tr>
+                            <th rowspan="2">Ação</th>
+                            <th colspan="8">Permissões</th>
+                        </tr>
+                        <tr>
+                            <th>Visualiza</th>
+                            <th>Insere</th>
+                            <th>Atualiza</th>
+                            <th>Exclui</th>
+                            <th>Importa</th>
+                            <th>Exporta</th>
+                            <th>Imprime</th>
+                            <th>Especial</th>
+                        </tr>
+                </prop:HeaderTemplate>
+                <prop:ItemTemplate>
+                    <com:TTableRow ID="trPermissao">
+                        <com:TTableCell><com:TLiteral ID="ltAcao" /><com:THiddenField ID="hdfAcao" /></com:TTableCell>
+                        <com:TTableCell CssClass="center"><com:TCheckBox ID="ckbVisualiza" Text="" /></com:TTableCell>
+                        <com:TTableCell CssClass="center"><com:TCheckBox ID="ckbInsere" Text="" /></com:TTableCell>
+                        <com:TTableCell CssClass="center"><com:TCheckBox ID="ckbAtualiza" Text="" /></com:TTableCell>
+                        <com:TTableCell CssClass="center"><com:TCheckBox ID="ckbExclui" Text="" /></com:TTableCell>
+                        <com:TTableCell CssClass="center"><com:TCheckBox ID="ckbImporta" Text="" /></com:TTableCell>
+                        <com:TTableCell CssClass="center"><com:TCheckBox ID="ckbExporta" Text="" /></com:TTableCell>
+                        <com:TTableCell CssClass="center"><com:TCheckBox ID="ckbImprime" Text="" /></com:TTableCell>
+                        <com:TTableCell CssClass="center"><com:TCheckBox ID="ckbEspecial" Text="" /></com:TTableCell>
+                    </com:TTableRow>
+                </prop:ItemTemplate>
+                <prop:FooterTemplate>
+                    </table>
+                </prop:FooterTemplate>
+            </com:TRepeater>
+
+            <span class="controls">
+                <com:TButton CssClass="button" ID="btSalvar" Text="Salvar" OnClick="salvarClick" />
+                <com:TButton CssClass="button" ID="btCancelar" Text="Cancelar" Attributes.onClick="document.location='<%=$this->Service->constructUrl('admin.usuarios.UsuarioList')%>';return false;" />
+            </span>
+        </fieldset>
+    </com:TPanel>
+
+</com:TContent>

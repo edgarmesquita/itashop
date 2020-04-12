@@ -1,0 +1,121 @@
+html, body{height:100%;}
+body{margin: 0; padding: 0;}
+body, p, a, td, th, input, textarea, select, span, label{font-family:"Arial"; font-size:9pt; color:#333;}
+
+p{margin-top:0; padding-top:0;}
+h1, h1 a, h2, h2 a, h3, h3 a, h4, h4 a, h5, h5 a, h6, h6 a{margin:0; padding:0; color:#0066CC;  line-height: 120%; text-decoration: none;}
+
+h1, h1 a{font-size: 20pt;}
+h2, h2 a{font-size: 18pt; padding: 0 0 16pt 0;}
+h3, h3 a{font-size: 14pt; padding: 0 0 12pt 0;}
+h4, h4 a{font-size: 13pt; padding: 0 0 11pt 0;}
+h5, h5 a{font-size: 12pt; padding: 0 0 10pt 0;}
+h6, h6 a{font-size: 11pt; padding: 0 0 9pt 0;}
+
+img{border:none;}
+
+.center{text-align: center;}
+.middle{vertical-align: middle;}
+.hidden{display:none;}
+
+#all{border-top: 5px solid #284987; margin: 0;}
+#header, #menu ul, #content{width:960px; margin:0 auto;}
+
+#header{position:relative; height: 135px;}
+#header h1{display: block; position: absolute; top:10px; width:247px; height:125px; overflow:hidden; text-indent:-1000px; background:url(../images/logo.jpg) no-repeat; margin: 0; padding: 0;}
+#header p.tab{display: block; position: absolute; top: 0; right: 0; height: 25px; background: #C9D7EF; margin: 0; padding: 0;}
+#header p.invitation{display: block; position: absolute; top: 50px; right: 0; color: #999; font-size: 14pt;}
+#header p.invitation span.title{color:#999; font-size: 14pt; font-weight: bold; display: block; margin: 0 0 5px 20px;}
+#header p.invitation span.text{margin:0 18px 2px 0;}
+#header p.invitation input.bt-enviar{margin:0 0 2px 0;}
+
+#menu{ height: 30px; background: #284987; margin: 0 0 20px 0;}
+#menu ul{list-style: none; padding: 0;}
+#menu ul li{display: inline;}
+#menu ul li a{color:#FFF; font-size: 12pt; font-weight: bold; text-decoration: none; margin: 0 20px; display: inline-block; padding: 0;}
+#menu ul li ul{background: #D7D7D7; height: 26px;}
+#menu ul li ul li a span{color:#333;}
+
+#content{min-height: 400px;}
+/* ================ COLUNA DA ESQUERDA ================ */
+#left{float:left; width: 221px; margin: 0 25px 0 0;}
+#left p.time{margin:0 0 0 3px !important; padding:0 !important;}
+#left p.time span.box{font-size:8pt; display: inline-block; background: url(../images/box-time.jpg) no-repeat; width: 68px; height: 81px; text-align: center; padding: 0 4px 0 0;}
+#left p.time span.box span.number{font-size: 32pt; color:#0099FF; font-weight: bold; display: block; text-align: center; padding: 18px 0 18px 0;}
+
+    #discount{margin:0 0 20px 0;}
+    #discount img.ticket{position:absolute; top: -12px; left: -15px;}
+    #discount div.content div.center p.first{padding:130px 10px 10px 0; text-align: right; font-weight: bold; line-height: 150%;}
+    #discount div.content div.center p.first span.from{color:#666;}
+    #discount div.content div.center p.first span.to{color: #912626; font-size: 14pt;}
+    #discount div.content div.center p.buy{text-align: center; background:url(../images/shadow.png) 50% top no-repeat; padding: 16px 0 5px 0;}
+/* ==================================================== */
+
+
+/* ================= COLUNA DA DIREITA ================ */
+#right{float:right; width: 221px; margin: 0 0 0 25px;}
+#right div.box div.content div.center p.image{border:1px solid #D4D4D4; display:inline-block; margin: 0 0 10px 10px; width: 195px; padding: 0;}
+
+    #promotions{margin:0 0 20px 0;}
+/* ==================================================== */
+
+#center{margin:0 246px; line-height: 130%;}
+#center p.image{border:1px solid #D4D4D4; display:inline-block; margin: 0 auto 20px auto;}
+#center h3{color:#666;}
+#center ul{background: #EDEDED; border:1px solid #D4D4D4; margin: 0 0 10px 0; padding: 5px; list-style: disc inside;}
+
+#footer{background:#284987; color:#FFF; text-align: center; clear: both;}
+
+/* ======================== BOX ======================= */
+div.box{background:#F0F0F0 url(../images/box-bg.jpg) 0px 8px repeat-x;}
+div.box div.header{height:8px; background:url(../images/box-top-left.gif) no-repeat; padding:0 0 0 8px;}
+div.box div.header span{display:block; height:8px; background:url(../images/box-top-right.gif) top right no-repeat; padding:0 8px 0 0;}
+div.box div.header span span{display:block; height:8px; background:url(../images/box-top.gif) repeat-x; padding:0;}
+
+div.box div.content{background:url(../images/box-left2.gif) repeat-y;}
+div.box div.content div.center{background:url(../images/box-right2.gif) top right repeat-y; min-height:135px; text-align:left; position:relative;}
+
+div.box div.content div.center span.left{float:left; width:8px; margin:0 -8px 0 0; height:135px; background:url(../images/box-left.jpg) no-repeat;}
+div.box div.content div.center span.right{float:right; width:8px; margin:0 0 0 -8px; height:135px; background:url(../images/box-right.jpg) no-repeat;}
+
+div.box div.content div.center h4, div.box div.content div.center p{padding:0 10px 10px 10px; margin: 0;}
+div.box div.content div.center h3{display:block; margin:0; padding:0 10px 20px 10px !important; background:url(../images/shadow.png) 50% bottom no-repeat;}
+div.box div.content div.center h4, div.box div.content div.center h4 a{color:#333; font-size: 11pt;}
+div.box div.content div.center p{color:#666; line-height:130%;}
+div.box div.content div.center a{color:#0099CC; text-decoration:none; font-weight:bold;}
+div.box div.content div.center hr{border-top: 1px dashed #D4D4D4; border-bottom: 1px dashed #FFF;}
+div.box div.content div.center ul li a{position:inherit;}
+
+div.box div.footer{height:8px; background:url(../images/box-bottom-left.gif) no-repeat; padding:0 0 0 8px; clear: both;}
+div.box div.footer span{display:block; height:8px; background:url(../images/box-bottom-right.gif) top right no-repeat; padding:0 8px 0 0;}
+div.box div.footer span span{display:block; height:8px; background:url(../images/box-bottom.gif) repeat-x; padding:0;}
+/* ==================================================== */
+
+
+div.popup{position:absolute; background:transparent; font-size:9px; z-index:3000;}
+div.popup div.titleBar{background:url(../images/gradient.gif) repeat-x; height:20px; padding:0 4px; border:1px solid #0D3E98;}
+div.popup div.titleBar span.title{padding:4px 0 0 0; display:block;}
+div.popup a.close{float:right; font-weight:bold;}
+
+
+span.important{font-weight:bold; color:#0D3E98; font-size:11pt;}
+span.success{font-weight:bold; color:#339900; font-size:11pt;}
+span.error{font-weight:bold; color:#990000; font-size:11pt;}
+span.text{vertical-align: middle; background:url(../images/input-left.gif) no-repeat; height: 27px; display: inline-block; margin: 0 8px 0 0;}
+span.text input{margin:0 -8px 0 0; padding: 5px; vertical-align: middle; background: url(../images/input-right.gif) right top no-repeat; border: none; font-size: 10pt; height: 17px;}
+
+
+/* ================= FORMULÁRIO ================= */
+span.row, fieldset p{display:block; padding:0 0 10px 0; margin: 0;}
+span.row span.pre-field, span.row label.first, fieldset p span.pre-field, fieldset p label.first{display:inline-block; width:100px; text-align:right; font-weight:bold; vertical-align:middle; padding:2px 5px 0 0;}
+span.row span.field, fieldset p span.field{display:inline-block; padding:0 5px 0 0;}
+span.row span.field input, span.row span.field textarea, span.row span.field select{vertical-align: middle;}
+span.row span.html{display:inline-block; border:1px solid #CCC; background:#FFF; height:200px; overflow:auto; width:400px; vertical-align:text-top; padding:5px;}
+span.row span.mceEditor{display:inline-block; vertical-align:text-top;}
+span.controls, p.controls{display:block; padding:0 0 0 109px;}
+fieldset table.grid, fieldset h4{margin: 0 0 10px 109px;}
+
+input.button{vertical-align: middle; line-height: 0!important; font-size: 0!important; color: transparent; border: none; overflow: hidden; cursor: pointer;}
+input.bt-enviar{background:transparent url(../images/bt-enviar.gif) no-repeat; width: 93px; height: 27px; }
+input.bt-comprar{background:transparent url(../images/bt-comprar.gif) no-repeat; width: 93px; height: 27px; }
+/* ============================================== */
